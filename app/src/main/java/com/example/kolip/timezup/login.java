@@ -40,6 +40,7 @@ public class login extends AppCompatActivity {
                 if (firebaseAuth.getCurrentUser() != null) {
                     Intent inten = new Intent(login.this, MainActivity.class);
                     startActivity(inten);
+
                 }
 
             }
@@ -59,6 +60,7 @@ public class login extends AppCompatActivity {
                         if (task.isSuccessful()){
                             Intent inten = new Intent(login.this, MainActivity.class);
                             startActivity(inten);
+                            finish();
                         }
                         else{
                             Toast.makeText(login.this, "couldnt move in", Toast.LENGTH_LONG).show();
