@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "111320643313",
+    "firebase_url": "https://timezup-b4016.firebaseio.com",
+    "project_id": "timezup-b4016",
+    "storage_bucket": "timezup-b4016.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111320643313:android:c069c0f0b0c9c5a4",
+        "android_client_info": {
+          "package_name": "com.example.kolip.timezup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111320643313-bagmr9mtupkru5cgoru6plu0dqeo7fam.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kolip.timezup",
+            "certificate_hash": "fd9a403e13117cd1edb3ea10da39edb395acb1ea"
+          }
+        },
+        {
+          "client_id": "111320643313-rusgdnqrs2u1mfpvfaa7rctk50p8hst2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIVea8M3JL9X7Q9lDKENFMmLoWqQuSw6g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111320643313-rusgdnqrs2u1mfpvfaa7rctk50p8hst2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
