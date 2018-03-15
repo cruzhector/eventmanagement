@@ -27,7 +27,7 @@
                    android:layout_width="120dp"
                    android:layout_height="30dp"
                    android:text="Tick it"
-                   android:background="@drawable/sgnup_butshp"
+                   android:background="@drawable/buttclr"
                    android:layout_centerHorizontal="true"
                    android:layout_alignParentBottom="true"
                    android:layout_marginBottom="20dp"

@@ -1,6 +1,7 @@
 package com.example.kolip.timezup;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +18,9 @@ public class timeschedfrag extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        Intent intent = new Intent(getContext(),timeschedule.class);
+        startActivity(intent);
 
 
     }

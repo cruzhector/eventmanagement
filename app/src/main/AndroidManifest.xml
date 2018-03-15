@@ -22,7 +22,8 @@
         </activity>
         <activity android:name=".sound" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".timeschedule"></activity>
+        <activity android:name=".timeschedule" />
+        <activity android:name=".missedcall"></activity>
     </application>
 
 </manifest>
