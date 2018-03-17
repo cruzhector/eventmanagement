@@ -46,7 +46,10 @@ b2.setOnClickListener(new View.OnClickListener() {
     }
 });
 
-}
+
+    }
+
+
 public void loadfrag(timeschedfrag fragment){
 
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
@@ -79,5 +82,7 @@ public void loadfrag(timeschedfrag fragment){
             finishAffinity();
         }
         }
-    }
+
+
+}
 

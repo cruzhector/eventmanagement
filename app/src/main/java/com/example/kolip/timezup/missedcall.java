@@ -1,7 +1,11 @@
 package com.example.kolip.timezup;
 
+import android.app.AlarmManager;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.media.AudioManager;
 import android.net.Uri;
@@ -13,11 +17,15 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,21 +34,34 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public class missedcall extends AppCompatActivity {
 ImageButton b,b1;
-RadioButton r1,r2,r3;
+
 EditText e1;
-CardView cardView;
+TextView tv1,tv2;
+    Date tm1;
+    Date tm2;
+CardView cardView,c1;
+String time1,time2;
     static boolean ring = false;
     static boolean callReceived = false;
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    RelativeLayout rl1,rl2;
+    long timemillis1,timemillis2,maintimemillis;
+    String []seperate;
+    String []seperate1;
+    long subtime,subtime1;
 String id,mess;
-    AudioManager audioManager;
-    private int maxvol;
+
     private NotificationManager mNotificationManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +69,17 @@ String id,mess;
         setContentView(R.layout.activity_missedcall);
 
         b = (ImageButton) findViewById(R.id.setpro);
+
         b1 = (ImageButton) findViewById(R.id.store);
         e1=(EditText)findViewById(R.id.mess);
-        r1 = (RadioButton) findViewById(R.id.radmet);
-        r2 = (RadioButton) findViewById(R.id.raddrv);
-        r3 = (RadioButton) findViewById(R.id.radplay);
+
         cardView = (CardView) findViewById(R.id.setprocard);
-firebaseAuth=FirebaseAuth.getInstance();
+        c1 = (CardView) findViewById(R.id.setprocard1);
+        rl1=(RelativeLayout)findViewById(R.id.t1);
+        rl2=(RelativeLayout)findViewById(R.id.t2);
+        tv1=(TextView)findViewById(R.id.settm1);
+        tv2=(TextView)findViewById(R.id.settm2);
+        firebaseAuth=FirebaseAuth.getInstance();
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
         firebaseFirestore=FirebaseFirestore.getInstance();
         id=firebaseUser.getUid();
@@ -62,33 +87,41 @@ firebaseAuth=FirebaseAuth.getInstance();
 
         mNotificationManager = (NotificationManager) this.getSystemService(NOTIFICATION_SERVICE);
 
-        audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
-        maxvol = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cardView.setVisibility(View.VISIBLE);
+                c1.setVisibility(View.VISIBLE);
+                b.setVisibility(View.GONE);
             }
         });
 
-        r1.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
+
+
+
+
+
+
+
+        rl1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                r2.setChecked(false);
-                r3.setChecked(false);
-                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_SHOW_UI);
-                audioManager.setStreamVolume(AudioManager.STREAM_RING, 0, AudioManager.FLAG_SHOW_UI);
-                audioManager.setStreamVolume(AudioManager.STREAM_SYSTEM, 0, AudioManager.FLAG_SHOW_UI);
-                audioManager.adjustSuggestedStreamVolume(AudioManager.ADJUST_LOWER, AudioManager.STREAM_RING, AudioManager.FLAG_SHOW_UI);
-                audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+                showHourPicker1();
+
+            }
+        });
+        rl2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              showHourPicker();
 
             }
         });
 
 
 
-b1.setOnClickListener(new View.OnClickListener() {
+        b1.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
 
@@ -107,11 +140,129 @@ b1.setOnClickListener(new View.OnClickListener() {
                 }
             }
         });
+
+        time1=tv1.getText().toString();
+        time2=tv2.getText().toString();
+        seperate=time1.split(":");
+        seperate1=time2.split(":");
+        SimpleDateFormat sdf=new SimpleDateFormat("HH:mm");
+        try {
+            tm1=sdf.parse(time1);
+            tm2=sdf.parse(time2);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if (TextUtils.isEmpty(time1)||TextUtils.isEmpty(time2)){
+        Toast.makeText(missedcall.this, "time fields are empty", Toast.LENGTH_SHORT).show();
+    }
+else if(tm1.compareTo(tm2)>0){
+            Toast.makeText(missedcall.this, "in time is more than out time", Toast.LENGTH_SHORT).show();
+    }
+    else if (tm1.equals(tm2)){
+            Toast.makeText(missedcall.this, "Times cannot be equal", Toast.LENGTH_SHORT).show();
+        }
+    else {
+
+    timer();
+
+}
     }
 });
     }
 
 
+    public void showHourPicker() {
+        final Calendar myCalender = Calendar.getInstance();
+        int hour = myCalender.get(Calendar.HOUR_OF_DAY);
+        int minute = myCalender.get(Calendar.MINUTE);
 
+
+        TimePickerDialog.OnTimeSetListener myTimeListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                if (view.isShown()) {
+                    myCalender.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                    myCalender.set(Calendar.MINUTE, minute);
+                    tv2.setText( hourOfDay + ":" + minute);
+
+                }
+            }
+        };
+        TimePickerDialog timePickerDialog = new TimePickerDialog(missedcall.this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar, myTimeListener, hour, minute, true);
+        timePickerDialog.setTitle("Choose hour:");
+        timePickerDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        timePickerDialog.show();
+    }
+
+
+
+    public void showHourPicker1() {
+        final Calendar myCalender = Calendar.getInstance();
+        int hour = myCalender.get(Calendar.HOUR_OF_DAY);
+        int minute = myCalender.get(Calendar.MINUTE);
+
+
+        TimePickerDialog.OnTimeSetListener myTimeListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                if (view.isShown()) {
+                    myCalender.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                    myCalender.set(Calendar.MINUTE, minute);
+                    tv1.setText( hourOfDay + ":" + minute);
+
+                }
+            }
+        };
+        TimePickerDialog timePickerDialog = new TimePickerDialog(missedcall.this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar, myTimeListener, hour, minute, true);
+        timePickerDialog.setTitle("Choose hour:");
+        timePickerDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        timePickerDialog.show();
+    }
+
+public void timer(){
+    Calendar c1=Calendar.getInstance();
+    c1.set(Calendar.HOUR_OF_DAY, Integer.parseInt(seperate[0]));
+    c1.set(Calendar.MINUTE, Integer.parseInt(seperate[1]));
+    timemillis1=c1.getTimeInMillis();
+
+
+    Calendar c2=Calendar.getInstance();
+    c2.set(Calendar.HOUR_OF_DAY, Integer.parseInt(seperate1[0]));
+    c2.set(Calendar.MINUTE, Integer.parseInt(seperate1[1]));
+    timemillis2=c2.getTimeInMillis();
+
+    Calendar c3=Calendar.getInstance();
+    maintimemillis=c3.getTimeInMillis();
+
+    subtime=timemillis1-maintimemillis;
+    subtime1=timemillis2-maintimemillis;
+
+    Log.d("tag", String.valueOf(timemillis1));
+    Log.d("tag", String.valueOf(timemillis2));
+    Log.d("tag", String.valueOf(maintimemillis));
+    Log.d("tag", String.valueOf(subtime));
+    Log.d("tag", String.valueOf(subtime1));
+    Log.d("tag", seperate[0]);
+    Log.d("tag", seperate[1]);
+
+
+
+    Intent intent = new Intent(missedcall.this, setprofile.class);
+    PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 2343, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+    alarmManager.set(AlarmManager.RTC_WAKEUP, maintimemillis+subtime, pendingIntent);
+
+
+    Intent intent1 = new Intent(missedcall.this, cancelprofile.class);
+    intent1.putExtra("key",pendingIntent);
+    PendingIntent pendingIntent1 = PendingIntent.getBroadcast(getApplicationContext(), 2343, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
+    alarmManager.set(AlarmManager.RTC_WAKEUP,maintimemillis+subtime1,pendingIntent1);
+
+    Toast.makeText(this, "Scheduled at "+" "+time1, Toast.LENGTH_SHORT).show();
+    Toast.makeText(this, "will cancel at "+" "+time2, Toast.LENGTH_SHORT).show();
+
+
+}
 
 }

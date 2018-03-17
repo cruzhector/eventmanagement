@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.WRITE_SMS"/>
     <uses-permission android:name="android.permission.READ_SMS"/>
     <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.BROADCAST_SMS"
         tools:ignore="ProtectedPermissions" />
 
@@ -34,7 +35,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".sound" />
         <activity android:name=".MainActivity" />
         <activity android:name=".timeschedule" />
         <activity android:name=".missedcall"></activity>
@@ -47,8 +47,24 @@
                 <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
             </intent-filter>
         </receiver>
-
-
+        <receiver
+            android:name=".setprofile"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="action"/>
+                <category android:name="category" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".cancelprofile"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="action"/>
+                <category android:name="category" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

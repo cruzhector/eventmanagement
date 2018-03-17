@@ -17,9 +17,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-/**
- * Created by kolip on 15-03-2018.
- */
 
 public class callreceive extends BroadcastReceiver {
 
@@ -73,16 +70,11 @@ DocumentReference documentReference;
             }
 
            else if (state.equals(TelephonyManager.EXTRA_STATE_IDLE)) {
-
-//                if (ring == true && callReceived == false) {
-//                    Toast.makeText(context, "It was A MISSED CALL from : " + callerPhoneNumber, Toast.LENGTH_LONG).show();
-//                }
                 states = TelephonyManager.CALL_STATE_IDLE;
             }
             onCallStateChanged(context, states, callerPhoneNumber);
         }
     }
-//    String ms = e1.getText().toString();
 
     public void onCallStateChanged(Context context, int states, String callerPhoneNumber){
         if(lastState == states){
