@@ -48,7 +48,7 @@ EditText e1;
 TextView tv1,tv2;
     Date tm1;
     Date tm2;
-CardView cardView,c1;
+CardView c1;
 String time1,time2;
     static boolean ring = false;
     static boolean callReceived = false;
@@ -73,7 +73,6 @@ String id,mess;
         b1 = (ImageButton) findViewById(R.id.store);
         e1=(EditText)findViewById(R.id.mess);
 
-        cardView = (CardView) findViewById(R.id.setprocard);
         c1 = (CardView) findViewById(R.id.setprocard1);
         rl1=(RelativeLayout)findViewById(R.id.t1);
         rl2=(RelativeLayout)findViewById(R.id.t2);
@@ -84,6 +83,7 @@ String id,mess;
         firebaseFirestore=FirebaseFirestore.getInstance();
         id=firebaseUser.getUid();
 
+        e1.setText("im in a meeting call u back later");
 
         mNotificationManager = (NotificationManager) this.getSystemService(NOTIFICATION_SERVICE);
 
@@ -91,7 +91,6 @@ String id,mess;
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cardView.setVisibility(View.VISIBLE);
                 c1.setVisibility(View.VISIBLE);
                 b.setVisibility(View.GONE);
             }
@@ -162,6 +161,7 @@ else if(tm1.compareTo(tm2)>0){
     else if (tm1.equals(tm2)){
             Toast.makeText(missedcall.this, "Times cannot be equal", Toast.LENGTH_SHORT).show();
         }
+
     else {
 
     timer();

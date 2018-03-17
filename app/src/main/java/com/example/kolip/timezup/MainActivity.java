@@ -20,6 +20,8 @@ Button b1,b2;
 RelativeLayout r1;
 TextView t;
     int count=0;
+    android.support.v4.app.FragmentManager fragmentManager,fragmentManager1;
+    android.support.v4.app.FragmentTransaction fragmentTransaction,fragmentTransaction1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +54,8 @@ b2.setOnClickListener(new View.OnClickListener() {
 
 public void loadfrag(timeschedfrag fragment){
 
-        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction fragmentTransaction =fragmentManager.beginTransaction();
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction =fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.fraganim,R.anim.fragright);
         fragmentTransaction.replace(R.id.card,fragment);
         fragmentTransaction.commit();
@@ -62,11 +64,11 @@ public void loadfrag(timeschedfrag fragment){
 
     public void loadfrag1(missedcallfrag fragment){
 
-        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction fragmentTransaction =fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.anim.fraganim,R.anim.fragright);
-        fragmentTransaction.replace(R.id.card,fragment);
-        fragmentTransaction.commit();
+         fragmentManager1 = getSupportFragmentManager();
+         fragmentTransaction1 =fragmentManager1.beginTransaction();
+         fragmentTransaction1.setCustomAnimations(R.anim.fraganim,R.anim.fragright);
+         fragmentTransaction1.replace(R.id.card,fragment);
+         fragmentTransaction1.commit();
 
     }
 
