@@ -58,6 +58,7 @@ public void loadfrag(timeschedfrag fragment){
         fragmentTransaction =fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.fraganim,R.anim.fragright);
         fragmentTransaction.replace(R.id.card,fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
 }
@@ -68,6 +69,7 @@ public void loadfrag(timeschedfrag fragment){
          fragmentTransaction1 =fragmentManager1.beginTransaction();
          fragmentTransaction1.setCustomAnimations(R.anim.fraganim,R.anim.fragright);
          fragmentTransaction1.replace(R.id.card,fragment);
+         fragmentTransaction1.addToBackStack(null);
          fragmentTransaction1.commit();
 
     }

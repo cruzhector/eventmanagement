@@ -8,9 +8,6 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.widget.Toast;
 
-/**
- * Created by kolip on 17-03-2018.
- */
 
 public class cancelprofile extends BroadcastReceiver {
     AudioManager audioManager;
@@ -21,6 +18,7 @@ public class cancelprofile extends BroadcastReceiver {
         PendingIntent pendingIntent=intent.getParcelableExtra("key");
         AlarmManager alarmManager=(AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
+
         audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         maxvol = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);

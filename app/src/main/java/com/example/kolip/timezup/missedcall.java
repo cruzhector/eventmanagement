@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.media.AudioManager;
 import android.net.Uri;
@@ -125,21 +126,6 @@ String id,mess;
     public void onClick(View view) {
 
         mess=e1.getText().toString().trim();
-        HashMap<String,Object> map = new HashMap<String, Object>();
-        map.put("message",mess);
-        firebaseFirestore.collection("user").document(id).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-                if (task.isSuccessful()){
-                    Toast.makeText(missedcall.this, "Your Message is successfully stored", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(missedcall.this, "try again", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
         time1=tv1.getText().toString();
         time2=tv2.getText().toString();
         seperate=time1.split(":");
@@ -152,17 +138,23 @@ String id,mess;
             e.printStackTrace();
         }
 
-        if (TextUtils.isEmpty(time1)||TextUtils.isEmpty(time2)){
-        Toast.makeText(missedcall.this, "time fields are empty", Toast.LENGTH_SHORT).show();
-    }
-else if(tm1.compareTo(tm2)>0){
-            Toast.makeText(missedcall.this, "in time is more than out time", Toast.LENGTH_SHORT).show();
-    }
-    else if (tm1.equals(tm2)){
-            Toast.makeText(missedcall.this, "Times cannot be equal", Toast.LENGTH_SHORT).show();
+            if (TextUtils.isEmpty(time1)||TextUtils.isEmpty(time2)){
+            Toast.makeText(missedcall.this, "time fields are empty", Toast.LENGTH_SHORT).show();
         }
+            else if(tm1.compareTo(tm2)>0){
+                Toast.makeText(missedcall.this, "in time is more than out time", Toast.LENGTH_SHORT).show();
+        }
+            else if (tm1.equals(tm2)){
+                Toast.makeText(missedcall.this, "Times cannot be equal", Toast.LENGTH_SHORT).show();
+            }
+            else  if (TextUtils.isEmpty(mess)){
+                Toast.makeText(missedcall.this, "Message box is empty", Toast.LENGTH_SHORT).show();
+            }
+            else {
 
-    else {
+                SharedPreferences.Editor editor=getSharedPreferences("user",MODE_PRIVATE).edit();
+                editor.putString("message",mess);
+                editor.commit();
 
     timer();
 
