@@ -15,6 +15,10 @@ public class cancelprofile extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
+
+        Toast.makeText(context, "cancelled", Toast.LENGTH_SHORT).show();
+
+
         PendingIntent pendingIntent=intent.getParcelableExtra("key");
         AlarmManager alarmManager=(AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
@@ -25,6 +29,7 @@ public class cancelprofile extends BroadcastReceiver {
         audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,maxvol,AudioManager.FLAG_SHOW_UI);
         audioManager.setStreamVolume(AudioManager.STREAM_RING,maxvol,AudioManager.FLAG_SHOW_UI);
         audioManager.setStreamVolume(AudioManager.STREAM_SYSTEM,maxvol,AudioManager.FLAG_SHOW_UI);
+        audioManager.adjustSuggestedStreamVolume(AudioManager.ADJUST_RAISE, AudioManager.STREAM_RING, AudioManager.FLAG_SHOW_UI);
 
 
     }

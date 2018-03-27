@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/messback"
+    tools:context="com.example.kolip.timezup.custommessage">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Schedule Your Messages"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:textColor="#ffffff"
+        android:textSize="30dp"
+        android:textStyle="italic"
+        android:fontFamily="sans-serif-condensed" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start timer for your message click below"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#ffffff"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="normal"
+        android:fontFamily="sans-serif-condensed" />
+
+
+
+
+        <RelativeLayout
+        android:id="@+id/t2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/fab1">
+
+        <TextView
+            android:id="@+id/set1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="10dp"
+            android:textColor="#ffffff"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+<LinearLayout
+    android:id="@+id/social"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select a Social App"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#ffffff"
+        android:textSize="30dp"
+        android:textStyle="italic"
+        android:fontFamily="sans-serif-condensed" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/watsapp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/whats"
+            android:orientation="horizontal" />
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/fb"-->
+                <!--android:layout_width="40dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_toRightOf="@+id/watsapp"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_marginRight="20dp"-->
+                <!--android:background="@drawable/f2"-->
+                <!--android:orientation="horizontal" />-->
+
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/messenger"-->
+                <!--android:layout_width="30dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_toRightOf="@+id/fb"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_marginRight="20dp"-->
+                <!--android:background="@drawable/m1"-->
+                <!--android:orientation="horizontal" />-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/telegram"-->
+                <!--android:layout_width="30dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_toRightOf="@+id/messenger"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_marginRight="20dp"-->
+                <!--android:background="@drawable/tele1"-->
+                <!--android:orientation="horizontal" />-->
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+<LinearLayout
+    android:id="@+id/sendmess"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Your Message"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#ffffff"
+        android:textSize="30dp"
+        android:textStyle="italic"
+        android:fontFamily="sans-serif-condensed" />
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="20dp"
+        android:elevation="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter recipient mobile number here"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="10dp"
+        android:elevation="10dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+<android.support.design.widget.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter message here"
+        android:layout_alignParentBottom="true"/>
+</android.support.design.widget.TextInputLayout>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Will be sent through"
+       android:layout_centerVertical="true"
+        android:textColor="#ffffff"
+        android:textSize="15dp"
+        android:layout_marginLeft="20dp"
+        android:textStyle="normal"
+        android:fontFamily="sans-serif-condensed" />
+
+
+    <ImageButton
+        android:id="@+id/store1"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:background="@drawable/fab2"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/keyarrow"
+        android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:id="@+id/appname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_centerVertical="true"
+        android:textColor="#ffffff"
+        android:textSize="15dp"
+        android:layout_toRightOf="@+id/store1"
+        android:textStyle="normal"
+        android:fontFamily="sans-serif-condensed" />
+
+</RelativeLayout>
+
+</LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

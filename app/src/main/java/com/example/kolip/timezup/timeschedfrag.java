@@ -35,7 +35,7 @@ Button b1;
       @Override
       public void onClick(View view) {
 
-          Intent intent = new Intent(getContext(),timeschedule.class);
+          Intent intent = new Intent(getContext(),custommessage.class);
           startActivity(intent);
       }
   });

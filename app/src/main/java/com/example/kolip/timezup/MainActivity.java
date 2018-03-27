@@ -27,10 +27,10 @@ TextView t;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-      b1=(Button)findViewById(R.id.frag2);
+        b1=(Button)findViewById(R.id.frag2);
         b2=(Button)findViewById(R.id.frag1);
         r1=(RelativeLayout)findViewById(R.id.card);
-       t=(TextView)findViewById(R.id.b1);
+        t=(TextView)findViewById(R.id.b1);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
