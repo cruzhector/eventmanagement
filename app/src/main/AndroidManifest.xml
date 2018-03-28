@@ -62,6 +62,16 @@
             </intent-filter>
         </receiver>
         <receiver
+            android:name=".send"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="action" />
+
+                <category android:name="category" />
+            </intent-filter>
+        </receiver>
+        <receiver
             android:name=".cancelprofile"
             android:enabled="true"
             android:exported="false">

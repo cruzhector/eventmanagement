@@ -69,7 +69,8 @@
     android:id="@+id/social"
     android:layout_width="match_parent"
     android:layout_height="130dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:visibility="gone">
 
     <TextView
         android:layout_width="wrap_content"
@@ -138,7 +139,8 @@
     android:id="@+id/sendmess"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:visibility="gone">
 
     <TextView
         android:layout_width="wrap_content"
@@ -166,6 +168,7 @@
             android:layout_marginRight="10dp">
 
             <AutoCompleteTextView
+                android:id="@+id/numbers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter recipient mobile number here"
@@ -195,6 +198,7 @@
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true">
     <EditText
+        android:id="@+id/textmsg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter message here"

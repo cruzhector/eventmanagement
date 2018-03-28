@@ -1,5 +1,6 @@
 package com.example.kolip.timezup;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -15,6 +16,7 @@ import android.widget.Button;
 public class timeschedfrag extends Fragment {
 View view;
 Button b1;
+    ProgressDialog progressDialog;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -34,9 +36,12 @@ Button b1;
   b1.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
+          progressDialog = ProgressDialog.show(getContext(),"Please wait" , "Get Set Go", true);
 
           Intent intent = new Intent(getContext(),custommessage.class);
+          progressDialog.dismiss();
           startActivity(intent);
+
       }
   });
   return view;
