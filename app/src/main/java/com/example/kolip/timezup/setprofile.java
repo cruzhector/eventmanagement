@@ -42,7 +42,6 @@ public class setprofile extends BroadcastReceiver {
         audioManager.setStreamVolume(AudioManager.STREAM_RING, 0, AudioManager.FLAG_SHOW_UI);
         audioManager.setStreamVolume(AudioManager.STREAM_SYSTEM, 0, AudioManager.FLAG_SHOW_UI);
         audioManager.adjustSuggestedStreamVolume(AudioManager.ADJUST_LOWER, AudioManager.STREAM_RING, AudioManager.FLAG_SHOW_UI);
-
         Intent intent1=new Intent(context,notificationservice.class);
         context.startService(intent1);
 

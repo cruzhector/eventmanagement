@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-Button b1,b2;
+Button b1,b2,b3;
 RelativeLayout r1;
 TextView t;
     int count=0;
@@ -29,6 +29,7 @@ TextView t;
 
         b1=(Button)findViewById(R.id.frag2);
         b2=(Button)findViewById(R.id.frag1);
+        b3=(Button)findViewById(R.id.frag3);
         r1=(RelativeLayout)findViewById(R.id.card);
         t=(TextView)findViewById(R.id.b1);
 
@@ -48,6 +49,14 @@ b2.setOnClickListener(new View.OnClickListener() {
     }
 });
 
+
+b3.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent=new Intent(MainActivity.this,custommessage.class);
+        startActivity(intent);
+    }
+});
 
     }
 

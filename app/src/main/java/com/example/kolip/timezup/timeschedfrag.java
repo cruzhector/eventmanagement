@@ -38,7 +38,7 @@ Button b1;
       public void onClick(View view) {
           progressDialog = ProgressDialog.show(getContext(),"Please wait" , "Get Set Go", true);
 
-          Intent intent = new Intent(getContext(),custommessage.class);
+          Intent intent = new Intent(getContext(),timeschedule.class);
           progressDialog.dismiss();
           startActivity(intent);
 

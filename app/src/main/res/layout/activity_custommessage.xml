@@ -44,13 +44,15 @@
 
 
 
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
         <RelativeLayout
         android:id="@+id/t2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
-        android:layout_gravity="center"
+        android:layout_centerInParent="true"
         android:background="@drawable/fab1">
 
         <TextView
@@ -64,6 +66,9 @@
     </RelativeLayout>
 
 
+
+
+</RelativeLayout>
 </LinearLayout>
 <LinearLayout
     android:id="@+id/social"
