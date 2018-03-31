@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/timeback"
     tools:context="com.example.kolip.timezup.timeschedule">
 
 <LinearLayout
@@ -17,7 +18,7 @@
         android:layout_height="50dp"
         android:text="Enter number of time slots u want "
         android:textSize="20dp"
-        android:textColor="#1a0101"
+        android:textColor="#fdfbfb"
         android:layout_marginLeft="10dp"
         android:fontFamily="sans-serif-condensed"
         android:layout_marginTop="20dp" />
@@ -27,7 +28,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="5dp"/>
+        android:layout_marginLeft="5dp"
+        android:inputType="number"/>
 
     <ImageButton
         android:id="@+id/listadd"
@@ -46,12 +48,146 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/timelist"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="60dp"
+       android:orientation="horizontal">
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="50dp"
+           android:text="slot"
+           android:textSize="20dp"
+           android:textColor="#f5f3f3"
+           android:layout_marginLeft="10dp"
+           android:fontFamily="sans-serif-condensed"
+           android:layout_marginTop="20dp" />
+
+       <TextView
+           android:id="@+id/cnt"
+           android:layout_width="wrap_content"
+           android:layout_height="50dp"
+           android:text="1"
+           android:textSize="20dp"
+           android:visibility="gone"
+           android:textColor="#fcf6f6"
+           android:layout_marginLeft="10dp"
+           android:fontFamily="sans-serif-condensed"
+           android:layout_marginTop="20dp" />
 
 
+
+
+   </LinearLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/vis"
+        android:layout_width="60dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="90dp"
+        android:visibility="gone"
+
+      >
+
+        <android.support.v7.widget.CardView
+            android:layout_width="60dp"
+            android:layout_height="185dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <RelativeLayout
+                    android:id="@+id/t12"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fab1">
+
+                    <TextView
+                        android:id="@+id/sett1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textSize="10dp"
+                        android:textColor="#ffffff"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="31dp"
+                    android:layout_centerInParent="true"
+                    android:background="@android:color/background_dark"
+                    ></View>
+
+                <RelativeLayout
+                    android:id="@+id/t22"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+               android:layout_alignParentBottom="true"
+           android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/fab1">
+
+
+                    <TextView
+                        android:id="@+id/sett2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10dp"
+                        android:layout_centerInParent="true"
+                        android:textColor="#ffffff"/>
+
+                </RelativeLayout>
+
+
+
+
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+    <ImageButton
+        android:id="@+id/list1"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:background="@drawable/fab2"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/keyarrow"
+android:visibility="gone"
+        android:layout_marginLeft="200dp"
+
+      />
+
+
+
+        <ImageButton
+            android:id="@+id/setalrm"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/fab3"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/keyarrow"
+
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp" />
+
+
+
+</RelativeLayout>
 </LinearLayout>
 
 

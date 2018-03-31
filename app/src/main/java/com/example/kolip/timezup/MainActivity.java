@@ -20,8 +20,8 @@ Button b1,b2,b3;
 RelativeLayout r1;
 TextView t;
     int count=0;
-    android.support.v4.app.FragmentManager fragmentManager,fragmentManager1;
-    android.support.v4.app.FragmentTransaction fragmentTransaction,fragmentTransaction1;
+    android.support.v4.app.FragmentManager fragmentManager,fragmentManager1,fragmentManager2;
+    android.support.v4.app.FragmentTransaction fragmentTransaction,fragmentTransaction1,fragmentTransaction2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +53,7 @@ b2.setOnClickListener(new View.OnClickListener() {
 b3.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
-        Intent intent=new Intent(MainActivity.this,custommessage.class);
-        startActivity(intent);
+    loadfrag2(new cusmsgfrag());
     }
 });
 
@@ -80,6 +79,17 @@ public void loadfrag(timeschedfrag fragment){
          fragmentTransaction1.replace(R.id.card,fragment);
          fragmentTransaction1.addToBackStack(null);
          fragmentTransaction1.commit();
+
+    }
+
+    public void loadfrag2(cusmsgfrag fragment){
+
+        fragmentManager2 = getSupportFragmentManager();
+        fragmentTransaction2 =fragmentManager2.beginTransaction();
+        fragmentTransaction2.setCustomAnimations(R.anim.fraganim,R.anim.fragright);
+        fragmentTransaction2.replace(R.id.card,fragment);
+        fragmentTransaction2.addToBackStack(null);
+        fragmentTransaction2.commit();
 
     }
 
