@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -62,6 +63,8 @@ public class timeschedule extends AppCompatActivity {
     AlarmManager [] alarmManager;
     AlarmManager [] alarmManager1;
     int n1;
+    View parentLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +76,7 @@ public class timeschedule extends AppCompatActivity {
         ib2=(ImageButton)findViewById(R.id.list1);
         ib3=(ImageButton)findViewById(R.id.setalrm);
 
+        parentLayout = findViewById(android.R.id.content);
 
         t1=(TextView) findViewById(R.id.sett1);
         t2=(TextView)findViewById(R.id.sett2);
@@ -99,6 +103,7 @@ public class timeschedule extends AppCompatActivity {
                  n1=Integer.parseInt(n);
                  rr3.setVisibility(View.VISIBLE);
                  ib2.setVisibility(View.VISIBLE);
+                 t3.setVisibility(View.VISIBLE);
 
              }catch (Exception e){
                  Log.d("tag", String.valueOf(e));
@@ -163,16 +168,17 @@ rr2.setOnClickListener(new View.OnClickListener() {
                             t1.setText("");
                             t2.setText("");
                             t3.setText(String.valueOf(set));
-
+                        Toast.makeText(timeschedule.this, "select slot"+" "+set, Toast.LENGTH_SHORT).show();
                             if (count==n1){
                                 rr3.setVisibility(View.GONE);
                                 ib2.setVisibility(View.GONE);
+                                t3.setVisibility(View.GONE);
                             }
 
 
                     }
                 else {
-                        Toast.makeText(timeschedule.this, "finish", Toast.LENGTH_SHORT).show();
+                        Snackbar.make(parentLayout,"No more slots available",Snackbar.LENGTH_SHORT).show();
                     }
 
                 }

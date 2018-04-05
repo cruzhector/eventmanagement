@@ -51,13 +51,12 @@ public class send extends BroadcastReceiver {
         Notification.Builder builder = new Notification.Builder(context);
 
         builder.setAutoCancel(true);
-        builder.setTicker("this is ticker text");
         builder.setContentTitle("WhatsApp Notification");
-        builder.setContentText("You have a new message");
-        builder.setSmallIcon(R.drawable.android);
+        builder.setContentText("message pending to"+" "+phn);
+        builder.setSmallIcon(R.drawable.logo);
         builder.setContentIntent(pendingIntent);
         builder.setOngoing(true);
-        builder.setSubText("This is subtext...");   //API level 16
+        builder.setSubText("Click on the notification");   //API level 16
         builder.build();
         myNotication = builder.getNotification();
         notificationManager.notify(11, myNotication);
