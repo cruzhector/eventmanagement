@@ -34,7 +34,7 @@ public class notificationservice extends IntentService {
         builder.setTicker("Scheduled your meeting");
         builder.setContentTitle("Timezup notification");
         builder.setContentText("Scheduled");
-        builder.setSmallIcon(R.drawable.logo);
+        builder.setSmallIcon(R.drawable.ic_clock);
         Intent intent1=new Intent(this,MainActivity.class);
         PendingIntent pendingIntent=PendingIntent.getActivity(this,2,intent1,PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(pendingIntent);

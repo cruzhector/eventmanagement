@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/b3"
+    android:background="@drawable/messback"
     tools:context="com.example.kolip.timezup.custommessage">
 
     <ScrollView
@@ -93,46 +93,46 @@
 
         <ImageButton
             android:id="@+id/watsapp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:visibility="gone"
-            android:background="@drawable/whats"/>
+            android:background="@drawable/ic_whatsapp"/>
 
-            <!--<LinearLayout-->
+            <!--<ImageButton-->
                 <!--android:id="@+id/fb"-->
-                <!--android:layout_width="40dp"-->
-                <!--android:layout_height="40dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
                 <!--android:layout_toRightOf="@+id/watsapp"-->
                 <!--android:layout_centerVertical="true"-->
                 <!--android:layout_marginLeft="20dp"-->
                 <!--android:layout_marginRight="20dp"-->
-                <!--android:background="@drawable/f2"-->
+                <!--android:background="@drawable/ic_facebook"-->
                 <!--android:orientation="horizontal" />-->
 
 
-            <!--<LinearLayout-->
+            <!--<ImageButton-->
                 <!--android:id="@+id/messenger"-->
-                <!--android:layout_width="30dp"-->
-                <!--android:layout_height="30dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
                 <!--android:layout_toRightOf="@+id/fb"-->
                 <!--android:layout_centerVertical="true"-->
                 <!--android:layout_marginLeft="20dp"-->
                 <!--android:layout_marginRight="20dp"-->
-                <!--android:background="@drawable/m1"-->
+                <!--android:background="@drawable/ic_instagram"-->
                 <!--android:orientation="horizontal" />-->
 
-            <!--<LinearLayout-->
+            <!--<ImageButton-->
                 <!--android:id="@+id/telegram"-->
-                <!--android:layout_width="30dp"-->
-                <!--android:layout_height="30dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
                 <!--android:layout_toRightOf="@+id/messenger"-->
                 <!--android:layout_centerVertical="true"-->
                 <!--android:layout_marginLeft="20dp"-->
                 <!--android:layout_marginRight="20dp"-->
-                <!--android:background="@drawable/tele1"-->
+                <!--android:background="@drawable/ic_twitter"-->
                 <!--android:orientation="horizontal" />-->
 
 

@@ -53,7 +53,7 @@ public class send extends BroadcastReceiver {
         builder.setAutoCancel(true);
         builder.setContentTitle("WhatsApp Notification");
         builder.setContentText("message pending to"+" "+phn);
-        builder.setSmallIcon(R.drawable.logo);
+        builder.setSmallIcon(R.drawable.ic_clock);
         builder.setContentIntent(pendingIntent);
         builder.setOngoing(true);
         builder.setSubText("Click on the notification");   //API level 16

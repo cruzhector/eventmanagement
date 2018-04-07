@@ -89,7 +89,7 @@
         android:layout_height="175dp"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="82dp"
-        android:visibility="gone"
+
 
       >
 
@@ -168,7 +168,6 @@
         android:background="@drawable/fab2"
         android:layout_marginTop="100dp"
         android:src="@drawable/keyarrow"
-android:visibility="gone"
         android:layout_marginLeft="200dp"
 
       />
