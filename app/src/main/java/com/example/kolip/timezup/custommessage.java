@@ -13,9 +13,11 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -45,16 +47,17 @@ public class custommessage extends AppCompatActivity {
     private List<String> name1=new ArrayList<>();
     TextView t1,t2,t3;
     EditText e1;
-    ImageButton ib1,ib2;
+    ImageButton ib1,ib2,ib3;
     View parent;
     long timemillis1;
     AutoCompleteTextView at1;
     String s1,num,num1,num2,time;
-    RelativeLayout r1;
-String appname;
+    RelativeLayout r1,r2;
+String appname,selectedImagePath;
 ProgressDialog progressDialog;
     String []seperate;
 LinearLayout l1,l2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,10 +71,11 @@ LinearLayout l1,l2;
         t2=(TextView)findViewById(R.id.appname);
         ib1=(ImageButton)findViewById(R.id.store1);
         ib2=(ImageButton)findViewById(R.id.watsapp);
-
+        ib3=(ImageButton)findViewById(R.id.instagram);
         at1=(AutoCompleteTextView)findViewById(R.id.numbers);
         e1=(EditText)findViewById(R.id.textmsg);
         r1=(RelativeLayout)findViewById(R.id.t2);
+        r2=(RelativeLayout)findViewById(R.id.socialvis);
 
         ContentResolver cr = this.getContentResolver();
 
@@ -137,9 +141,38 @@ LinearLayout l1,l2;
         ib2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                at1.setHint("Enter recipient mobile number here");
+                at1.setClickable(false);
                 l2.setVisibility(View.VISIBLE);
-                appname="Whatsapp";
+                appname="whatsapp";
                 t3.setText(appname);
+
+            }
+        });
+
+        ib3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                at1.setHint("click to select image");
+                at1.setClickable(true);
+                l2.setVisibility(View.VISIBLE);
+                appname="instagram";
+                e1.setVisibility(View.GONE);
+                e1.setText("instagram");
+                t3.setText(appname);
+
+            }
+        });
+
+        at1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,
+                        "Select Picture"), 1);
 
             }
         });
@@ -165,35 +198,34 @@ if (TextUtils.isEmpty(time)){
 else if(TextUtils.isEmpty(num)){
     Snackbar.make(parent,"number cannot be  empty",Snackbar.LENGTH_SHORT).show();
 }
-else if(TextUtils.isEmpty(num)){
+else if(TextUtils.isEmpty(s1)){
     Snackbar.make(parent,"message cannot be  empty",Snackbar.LENGTH_SHORT).show();
+}
+else if (TextUtils.isEmpty(appname)){
+    Snackbar.make(parent,"Select an application",Snackbar.LENGTH_SHORT).show();
 }
 
 
 else {
-
-
     SharedPreferences.Editor editor = getSharedPreferences("user", MODE_PRIVATE).edit();
-    editor.putString("text", s1);
-    editor.putString("phnum", num2);
+
+    if (appname.equals("whatsapp")) {
+
+        editor.putString("text", s1);
+        editor.putString("phnum", num2);
+        editor.commit();
+        intentsend();
+
+    }
+    else if (appname.equals("instagram")){
+    editor.putString("path",num);
     editor.commit();
+    intentsend();
+
+    }
 
 
-    Calendar c3 = Calendar.getInstance();
-    long maintimemillis = c3.getTimeInMillis();
 
-    Calendar c1 = Calendar.getInstance();
-    c1.set(Calendar.HOUR_OF_DAY, Integer.parseInt(seperate[0]));
-    c1.set(Calendar.MINUTE, Integer.parseInt(seperate[1]));
-    timemillis1 = c1.getTimeInMillis();
-    long subtime = timemillis1 - maintimemillis;
-
-    Intent intent = new Intent(custommessage.this, send.class);
-    PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 234, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-    alarmManager.set(AlarmManager.RTC_WAKEUP, maintimemillis + subtime, pendingIntent);
-
-    Toast.makeText(custommessage.this, "you will be notified", Toast.LENGTH_SHORT).show();
 
 
 }
@@ -201,6 +233,26 @@ else {
 });
 
 
+
+    }
+
+    public void intentsend(){
+        Calendar c3 = Calendar.getInstance();
+        long maintimemillis = c3.getTimeInMillis();
+
+        Calendar c1 = Calendar.getInstance();
+        c1.set(Calendar.HOUR_OF_DAY, Integer.parseInt(seperate[0]));
+        c1.set(Calendar.MINUTE, Integer.parseInt(seperate[1]));
+        timemillis1 = c1.getTimeInMillis();
+        long subtime = timemillis1 - maintimemillis;
+
+        Intent intent = new Intent(custommessage.this, send.class);
+        intent.putExtra("appname",appname);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 234, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, maintimemillis + subtime, pendingIntent);
+
+        Toast.makeText(custommessage.this, "you will be notified", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -228,6 +280,34 @@ else {
         timePickerDialog.show();
     }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 1) {
+                Uri selectedImageUri = data.getData();
+                selectedImagePath = getPath(selectedImageUri);
+                Log.d("tag111",selectedImagePath);
+                at1.setText(selectedImagePath);
+            }
+        }
+    }
+    public String getPath(Uri uri) {
 
+        if( uri == null ) {
+
+            return null;
+        }
+
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = managedQuery(uri, projection, null, null, null);
+        if( cursor != null ){
+            int column_index = cursor
+                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            String path = cursor.getString(column_index);
+            cursor.close();
+            return path;
+        }
+        return uri.getPath();
+    }
 
 }

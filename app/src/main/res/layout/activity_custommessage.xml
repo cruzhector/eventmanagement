@@ -74,6 +74,7 @@
     android:id="@+id/social"
     android:layout_width="match_parent"
     android:layout_height="130dp"
+android:visibility="gone"
     android:orientation="vertical"
    >
 
@@ -87,7 +88,17 @@
         android:textStyle="italic"
         android:fontFamily="sans-serif-condensed" />
 
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="10dp"
+        android:elevation="10dp">
     <RelativeLayout
+        android:id="@+id/socialvis"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -98,46 +109,45 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:visibility="gone"
             android:background="@drawable/ic_whatsapp"/>
 
-            <!--<ImageButton-->
-                <!--android:id="@+id/fb"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_toRightOf="@+id/watsapp"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:layout_marginLeft="20dp"-->
-                <!--android:layout_marginRight="20dp"-->
-                <!--android:background="@drawable/ic_facebook"-->
-                <!--android:orientation="horizontal" />-->
+            <ImageButton
+                android:id="@+id/fb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/watsapp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/ic_facebook"
+                android:orientation="horizontal" />
 
 
-            <!--<ImageButton-->
-                <!--android:id="@+id/messenger"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_toRightOf="@+id/fb"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:layout_marginLeft="20dp"-->
-                <!--android:layout_marginRight="20dp"-->
-                <!--android:background="@drawable/ic_instagram"-->
-                <!--android:orientation="horizontal" />-->
+            <ImageButton
+                android:id="@+id/instagram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/fb"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/ic_instagram"
+                android:orientation="horizontal" />
 
-            <!--<ImageButton-->
-                <!--android:id="@+id/telegram"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_toRightOf="@+id/messenger"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:layout_marginLeft="20dp"-->
-                <!--android:layout_marginRight="20dp"-->
-                <!--android:background="@drawable/ic_twitter"-->
-                <!--android:orientation="horizontal" />-->
+            <ImageButton
+                android:id="@+id/twitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/instagram"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/ic_twitter"
+                android:orientation="horizontal" />
 
 
     </RelativeLayout>
-
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
 <LinearLayout
@@ -145,7 +155,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:visibility="gone">
+    android:visibility="gone"
+    >
 
     <TextView
         android:layout_width="wrap_content"
@@ -171,13 +182,18 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
 
-            <AutoCompleteTextView
+                <AutoCompleteTextView
                 android:id="@+id/numbers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter recipient mobile number here"
                 android:layout_alignParentBottom="true"/>
+
+            </android.support.design.widget.TextInputLayout>
 
         </RelativeLayout>
 

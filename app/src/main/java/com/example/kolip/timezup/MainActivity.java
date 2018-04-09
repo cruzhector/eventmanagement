@@ -6,6 +6,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 Button b1,b2,b3;
 RelativeLayout r1;
 TextView t;
+FloatingActionButton fa;
     int count=0;
     android.support.v4.app.FragmentManager fragmentManager,fragmentManager1,fragmentManager2;
     android.support.v4.app.FragmentTransaction fragmentTransaction,fragmentTransaction1,fragmentTransaction2;
@@ -32,7 +34,16 @@ TextView t;
         b3=(Button)findViewById(R.id.frag3);
         r1=(RelativeLayout)findViewById(R.id.card);
         t=(TextView)findViewById(R.id.b1);
+        fa=(FloatingActionButton)findViewById(R.id.fab);
 
+
+        fa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent=new Intent(MainActivity.this,prototype.class);
+//                startActivity(intent);
+            }
+        });
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
